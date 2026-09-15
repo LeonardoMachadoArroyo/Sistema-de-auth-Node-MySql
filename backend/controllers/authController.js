@@ -16,9 +16,9 @@ export async function cadastrar(req, res) {
             mensagem: 'Conta criada com sucesso!'
         })
     } catch (erro) {
-        console.log(erro)
+        console.error('ERRO NO CADASTRO:', erro)
         res.status(500).json({
-            erro: 'Erro ao criar conta'
+            erro: erro.message
         })
     }
 }
