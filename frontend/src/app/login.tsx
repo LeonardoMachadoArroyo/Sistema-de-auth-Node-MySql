@@ -24,7 +24,7 @@ export default function Login() {
     try {
       setCarregando(true)
 
-      const resposta = await fetch('https://sistema-de-auth-node-mysql.onrender.com/auth/login', {
+      const resposta = await fetch('sistema-de-auth-node-mysql-sj55.onrender.com/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

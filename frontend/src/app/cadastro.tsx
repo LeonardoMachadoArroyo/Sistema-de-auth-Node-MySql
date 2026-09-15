@@ -43,7 +43,7 @@ async function criarConta() {
   try {
     setCarregando(true)
 
-    const resposta = await fetch('https://sistema-de-auth-node-mysql.onrender.com/auth/cadastro', {
+    const resposta = await fetch('https://sistema-de-auth-node-mysql-sj55.onrender.com/auth/cadastro', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
