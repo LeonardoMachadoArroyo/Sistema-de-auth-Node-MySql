@@ -18,32 +18,24 @@ export default function CreateAccount() {
   const [carregando, setCarregando] = useState(false)
 
 async function criarConta() {
-  
 
-  // if (!nome || !email || !senha || !confirmarSenha) {
-    
-
-  //   Alert.alert('Atenção', 'Preencha todos os campos')
-  //   return
-  // }
-
-  // if (senha !== confirmarSenha) {
-    
-
-  //   Alert.alert('Atenção', 'As senhas não são iguais')
-  //   return
-  // }
-
-  // if (senha.length < 6) {
-
-  //   Alert.alert('Atenção', 'A senha deve ter pelo menos 6 caracteres')
-  //   return
-  // }
+  if (!nome || !email || !senha || !confirmarSenha) {
+    Alert.alert('Atenção', 'Preencha todos os campos')
+    return
+  }
+  if (senha !== confirmarSenha) {
+    Alert.alert('Atenção', 'As senhas não são iguais')
+    return
+  }
+  if (senha.length < 6) {
+    Alert.alert('Atenção', 'A senha deve ter pelo menos 6 caracteres')
+    return
+  }
 
   try {
     setCarregando(true)
 
-    const resposta = await fetch('https://sistema-de-auth-node-mysql-sj55.onrender.com/auth/cadastro', {
+    const resposta = await fetch('https://localhost:3000/auth/cadastro', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +48,6 @@ async function criarConta() {
     })
 
     console.log('Status da resposta:', resposta.status)
-
     const dados = await resposta.json()
 
     if (!resposta.ok) {

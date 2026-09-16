@@ -24,7 +24,7 @@ export default function Login() {
     try {
       setCarregando(true)
 
-      const resposta = await fetch('https://sistema-de-auth-node-mysql-sj55.onrender.com/auth/login', {
+      const resposta = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -45,13 +45,13 @@ export default function Login() {
       router.replace({
         pathname: '/home',
         params: {
-          id: String(dados.usuario.id),
+          uid: String(dados.usuario.id),
           nome: dados.usuario.nome,
           email: dados.usuario.email
         }
       })
     } catch (erro) {
-      console.log(erro)
+      console.log(erro, 'Erro de conexão')
       Alert.alert(
         'Erro de conexão',
         'Não foi possível conectar ao servidor'

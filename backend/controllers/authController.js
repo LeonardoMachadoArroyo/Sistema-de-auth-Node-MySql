@@ -4,7 +4,7 @@ export async function cadastrar(req, res) {
     try {
         const { nome, email, senha } = req.body
         const sql = `
-            INSERT INTO authApp (nome, email, senha)
+            INSERT INTO authapp (nome, email, senha)
             VALUES (?, ?, ?)
         `
         await db.query(sql, [
@@ -26,7 +26,7 @@ export async function login(req, res) {
     try {
         const { email, senha } = req.body
         const [usuarios] = await db.query(
-            'SELECT * FROM authApp WHERE email = ? AND senha = ?',
+            'SELECT * FROM authapp WHERE email = ? AND senha = ?',
             [email, senha]
         )
         if (usuarios.length === 0) {
@@ -43,6 +43,7 @@ export async function login(req, res) {
                 email: usuario.email
             }
         })
+        console.log("login bem executado")
     } catch (erro) {
         console.log(erro)
         res.status(500).json({
